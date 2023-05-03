@@ -1,0 +1,54 @@
+<div class="home-header">
+
+    {{#if search}}
+    <h1>You are search for <span>{{search}}</span></h1>
+
+    {{#if toughtsQty}}
+
+    <p>Was found <span>{{toughtsQty}}</span></p>
+
+    {{else}}
+    <p>Not found any tought for the term <span>{{search}}</span></p>
+    {{/if}}
+
+    {{else}}
+    <h1>all the <span>Toughts</span></h1>
+    {{/if}}
+
+
+    <form action="/" method="get">
+        <input type="text" name="search" placeholder="Search anything here:">
+        <input type="submit" value="search" class="btn">
+    </form>
+
+    <div class="order-container">
+        <span>Order by:</span>
+
+        <form action="/" method="get">
+            <input type="hidden" name="search" value="{{this.search}}">
+            <input type="hidden" name="order" value="new">
+            <button type="submit"><i class="bi bi-arrow-up"></i></button>
+        </form>
+
+        <form action="/" method="get">
+            <input type="hidden" name="search" value="{{this.search}}">
+            <input type="hidden" name="order" value="old">
+            <button type="submit"><i class="bi bi-arrow-down"></i></button>
+        </form>
+        <a href="/">Clear</a>
+    </div>
+</div>
+
+<div class="toughts-container">
+
+    {{#each toughts}}
+
+    <figure>
+        <blockquote>
+            "{{this.title}}"
+        </blockquote>
+        <figcaption>por <span>{{this.User.name}}</span></figcaption>
+    </figure>
+
+    {{/each}}
+</div>
